@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ComponenetModule } from '../componenet/componenet.module';
 import { HomeComponent } from './home.component';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -11,7 +11,7 @@ import { HomeComponent } from './home.component';
   ],
   imports: [
     CommonModule,
-    ComponenetModule
+    RouterLink
   ]
 })
 export class HomeModule { }
