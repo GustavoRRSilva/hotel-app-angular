@@ -14,7 +14,7 @@ import { ReservationModule } from './reservation/reservation.module';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    ReservationModule
+    ReservationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

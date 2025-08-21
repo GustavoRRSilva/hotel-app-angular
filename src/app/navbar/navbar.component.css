@@ -1,0 +1,28 @@
+.navbar {
+  display: flex;
+  justify-content: center; /* centraliza botões */
+  align-items: center;
+  gap: 20px;
+  padding: 15px 30px;
+  background-color: #2c3e50;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: sticky; /* fica fixo no topo ao rolar */
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar button {
+  background: transparent;
+  border: 2px solid #ecf0f1;
+  border-radius: 6px;
+  color: #ecf0f1;
+  padding: 8px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navbar button:hover {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
