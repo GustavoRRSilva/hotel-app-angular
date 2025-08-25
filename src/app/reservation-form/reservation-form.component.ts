@@ -27,8 +27,8 @@ export class ReservationFormComponent implements OnInit {
 
   ngOnInit(){
     this.reservationForm = this.formBuilder.group({
-      checkInDate:['',Validators.required],
-      checkOutDate:['',Validators.required],
+      checkIn:['',Validators.required],
+      checkOut:['',Validators.required],
       guestName:['',Validators.required],
       guestEmail:['',[Validators.required,Validators.email]],
       roomNumber:['',Validators.required],
@@ -37,11 +37,12 @@ export class ReservationFormComponent implements OnInit {
     let id = this.activatedRoute.snapshot.paramMap.get('id')
     console.log(id)
     if(id){
-      let reservationToChange = this.reservationService.getReservation(id)
+      this.reservationService.getReservation(id).subscribe(reservation =>{
+        if(reservation)
+          this.reservationForm.patchValue(reservation)
+      })
 
-      if(reservationToChange){
-        this.reservationForm.patchValue(reservationToChange);
-      }
+
     }
   }
 
@@ -52,10 +53,13 @@ export class ReservationFormComponent implements OnInit {
        let id = this.activatedRoute.snapshot.paramMap.get('id')
 
        if(id){
-         this.reservationService.editReservation(id,reservation);
+         this.reservationService.editReservation(id,reservation).subscribe(()=>{
+          alert("sent to edit")
+         })
        }else{
-         this.reservationService.addReservation(reservation);
-
+         this.reservationService.addReservation(reservation).subscribe(()=>{
+          alert("sent to create")
+        });
        }
 
       this.router.navigate(["/list"])

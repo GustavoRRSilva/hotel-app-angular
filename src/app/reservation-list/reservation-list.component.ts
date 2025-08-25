@@ -15,11 +15,15 @@ export class ReservationListComponent implements OnInit {
   }
 
   deleteItem(id:string){
-    this.reservationService.deleteReservation(id)
+    this.reservationService.deleteReservation(id).subscribe(()=>{
+      alert("Delete request got processed.")
+    })
   }
 
   ngOnInit(){
-    this.reservationList = this.reservationService.getAllReservation()
+    this.reservationService.getAllReservation().subscribe(reservations => {
+      this.reservationList = reservations
+    })
     console.log(this.reservationList)
   }
 }
